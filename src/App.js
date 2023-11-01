@@ -6,10 +6,8 @@ function App() {
   // const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <div className="container">
-      <div className="max-w-xl mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
-        <Nav />
-      </div>
+    <div className="md:max-w-2xl md:mx-auto">
+      <Nav />
     </div>
   );
 }
