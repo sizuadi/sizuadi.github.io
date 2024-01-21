@@ -1,125 +1,102 @@
-import React, { useState } from "react";
-import { Transition } from "@headlessui/react";
-import { NavItem } from "./NavItem";
+import React, { useEffect, useRef, useState } from "react";
+import { NavSocialMedia } from "./NavSocialMedia";
+import { TypeAnimation } from "react-type-animation";
+// import { NavItem } from "./NavItem";
 // import { TypeAnimation } from "react-type-animation";
-const Nav = () => {
-	const [isOpen, setIsOpen] = useState(false);
+const items = [
+	{
+		text: "About",
+	},
+	{
+		text: "Education",
+	},
+	{
+		text: "Experience",
+	},
+	{
+		text: "Projects",
+	},
+];
+const Nav = ({ observerRefs }) => {
+	const observers = useRef([]);
+
+	const scrollDown = (key) => {
+		window.scrollTo({
+			top: observerRefs.current[key].offsetTop,
+			behavior: "smooth",
+		});
+	};
+
+	useEffect(() => {
+		if (observerRefs.current?.length && observers.current) {
+			Array.from(Array(10).keys()).forEach((_u, key) => {
+				observers.current[key] = new IntersectionObserver(
+					(e) => {
+						if (observerRefs.current[key]) {
+							observers.current[key].observe(observerRefs.current[key]);
+						}
+					},
+					{
+						root: null,
+						threshold: 0,
+					}
+				);
+				if (observerRefs.current[key]) {
+					observers.current[key].observe(observerRefs.current[key]);
+				}
+			});
+		}
+		return () =>
+			observers.current?.forEach((observer) => observer?.current?.disconnect());
+	}, [observerRefs, observers]);
 	return (
-		<div className="bg-primary top-0 fixed left-0 right-0">
-			<nav className="md:max-w-4xl md:mx-auto">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex items-center justify-between h-16">
-						<div className="flex items-center md:block flex-1">
-							<div className="flex-shrink-0 md:hidden">
-								<div className="text-quaternary text-lg font-semibold">
-									Sizuadi
-								</div>
-							</div>
-							<div className="hidden md:block">
-								<div className="flex justify-between items-baseline mx-10 text-md font-semibold">
-									<NavItem
-										link="/"
-										text="Intro"
-										textClass="hover:bg-tertiary text-quaternary hover:text-white transition duration-150 ease-out"
-									/>
-									<NavItem
-										link="/experience"
-										text="Experiences"
-										textClass="hover:bg-tertiary text-quaternary hover:text-white transition duration-150 ease-out"
-									/>
-									<NavItem
-										link="/project"
-										text="Projects"
-										textClass="hover:bg-tertiary text-quaternary hover:text-white transition duration-150 ease-out"
-									/>
-									<NavItem
-										link="/contact"
-										text="Contact Me"
-										textClass="hover:bg-tertiary text-quaternary hover:text-white transition duration-150 ease-out"
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="md:-mr-2 flex md:hidden">
-							<button
-								onClick={() => setIsOpen(!isOpen)}
-								type="button"
-								className="bg-quaternary inline-flex items-center justify-center p-2 rounded-md text-gray-400 transition duration-150 ease-out hover:text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-tertirary focus:ring-tertirary"
-								aria-controls="mobile-menu"
-								aria-expanded="false">
-								<span className="sr-only">Open main menu</span>
-								{!isOpen ? (
-									<svg
-										className="block h-6 w-6"
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										aria-hidden="true">
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M4 6h16M4 12h16M4 18h16"
-										/>
-									</svg>
-								) : (
-									<svg
-										className="block h-6 w-6"
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										aria-hidden="true">
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M6 18L18 6M6 6l12 12"
-										/>
-									</svg>
-								)}
-							</button>
-						</div>
-					</div>
-				</div>
-				<Transition
-					show={isOpen}
-					enter="transition ease-out duration-100 transform"
-					enterFrom="opacity-0 scale-95"
-					enterTo="opacity-100 scale-100"
-					leave="transition ease-in duration-75 transform"
-					leaveFrom="opacity-100 scale-100"
-					leaveTo="opacity-0 scale-95">
-					{(ref) => (
-						<div className="md:hidden" id="mobile-menu">
-							<div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-								<NavItem
-									link="/"
-									text="Intro"
-									textClass="hover:bg-gray-500 text-quaternary hover:text-gray-100 transition duration-150 ease-out"
-								/>
-								<NavItem
-									link="/experience"
-									text="Experiences"
-									textClass="hover:bg-gray-500 text-quaternary hover:text-gray-100 transition duration-150 ease-out"
-								/>
-								<NavItem
-									link="/project"
-									text="Projects"
-									textClass="hover:bg-gray-500 text-quaternary hover:text-gray-100 transition duration-150 ease-out"
-								/>
-								<NavItem
-									link="/contact"
-									text="Contact Me"
-									textClass="hover:bg-gray-500 text-quaternary hover:text-gray-100 transition duration-150 ease-out"
-								/>
-							</div>
-						</div>
-					)}
-				</Transition>
-			</nav>
-		</div>
+		<header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+			<div>
+				<h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+					<a href="/">Adi Siswanto</a>
+				</h1>
+				<h2 className="mt-3 text-lg font-light tracking-tight text-slate-200 sm:text-xl">
+					<TypeAnimation
+						sequence={[
+							// Same substring at the start will only be typed out once, initially
+							"I'm a Full-stack Developer",
+							1000, // wait 1s before replacing "Mice" with "Hamsters"
+							"I'm an Informatics Engineering Student",
+							1000,
+							"I'm a FOSS Enthusiast",
+							1000,
+						]}
+						wrapper="span"
+						speed={50}
+						style={{ display: "inline-block" }}
+						repeat={Infinity}
+					/>
+				</h2>
+				<p className="mt-4 max-w-xs leading-normal text-slate-200">
+					Fast learner and self-taught.
+				</p>
+				<nav className="nav hidden lg:block" aria-label="In-page jump links">
+					<ul className="mt-16 w-max">
+						{items.map((item, key) => {
+							return (
+								<li
+									className="group flex items-center py-3 active cursor-pointer"
+									key={key}
+									onClick={() => scrollDown(key)}>
+									<span
+										className={`nav-indicator mr-4 h-px group-hover:w-16 group-hover:bg-slate-200 transition-all motion-reduce:transition-none bg-slate-600 w-8`}></span>
+									<span
+										className={`nav-text text-xs font-bold uppercase tracking-widest  group-hover:text-slate-200 text-slate-500`}>
+										{item.text}
+									</span>
+								</li>
+							);
+						})}
+					</ul>
+				</nav>
+			</div>
+			<NavSocialMedia />
+		</header>
 	);
 };
 
