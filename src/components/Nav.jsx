@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { NavSocialMedia } from "./NavSocialMedia";
 import { TypeAnimation } from "react-type-animation";
-// import { NavItem } from "./NavItem";
-// import { TypeAnimation } from "react-type-animation";
 const items = [
 	{
 		text: "About",

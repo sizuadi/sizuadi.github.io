@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import Nav from "./Nav";
-import { Outlet } from "react-router-dom";
 import About from "./About";
 import Education from "./Education";
 import Footer from "./Footer";
