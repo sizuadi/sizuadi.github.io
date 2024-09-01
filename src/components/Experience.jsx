@@ -91,9 +91,9 @@ function Experience({ observerRefs }) {
 						{experiences.map((exp, key) => {
 							return (
 								<li
-									className="ml-6 mb-10 hover:bg-secondary/30 p-5 rounded-md transition duration-150 ease-in-out hover:scale-105"
+									className="ml-6 mb-10 hover:bg-secondary/30 p-5 rounded-md transition duration-150 ease-in-out group"
 									key={key}>
-									<span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-100 ring-light-bg-primary dark:ring-dark-bg-primary">
+									<span className="flex absolute -left-3 justify-center transition duration-300 ease-in-out  group-hover:translate-x-5 items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-100 ring-light-bg-primary dark:ring-dark-bg-primary">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 24 24"
