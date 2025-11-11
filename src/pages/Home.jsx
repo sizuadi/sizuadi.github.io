@@ -1,43 +1,52 @@
-import React from "react";
-import { TypeAnimation } from "react-type-animation";
+import React, { useRef } from "react";
+import Nav from "../components/Nav";
+import About from "../components/About";
+import Education from "../components/Education";
+import Footer from "../components/Footer";
+import Experience from "../components/Experience";
+import Project from "../components/Project";
+
+const menus = [
+	{
+		id: "",
+		link: `${
+			process.env.REACT_APP_BLOG_URL || "https://sizuadi.github.io/blog"
+		}`,
+		text: "Blog",
+	},
+	{
+		id: "about",
+		text: "About",
+	},
+	{
+		id: "education",
+		text: "Education",
+	},
+	{
+		id: "experience",
+		text: "Experience",
+	},
+	{
+		id: "project",
+		text: "Projects",
+	},
+];
+
 function Home() {
+	const observerRefs = useRef([]);
+
 	return (
-		<div className="md:max-w-3xl md:mx-auto text-primary-dark">
-			<div className="flex">
-				<div className="w-full">
-					<h1 className="text-5xl font-semibold text-center mt-5">
-						Hello, Adi's Here
-					</h1>
-					<div className="text-xl font-medium text-center mt-3">
-						<TypeAnimation
-							sequence={[
-								"Fullstack Developer",
-								1000,
-								"Self-taught Programmer",
-								1000,
-								"Informatics Engineering Student",
-								1000,
-								"Tech Enthusiast",
-								1000,
-							]}
-							wrapper="span"
-							speed={55}
-							style={{ display: "inline-block" }}
-							repeat={Infinity}
-						/>
-					</div>
-					<div className="mt-8 text-justify text-md font-medium leading-8">
-						Hi, my name is Adi Siswanto. I'm a Full Stack Developer, Informatics
-						Engineering Student, Open Source Enthusiast, and I love competitive
-						game xD.
-					</div>
-					<div className="mt-3 text-justify text-md font-medium leading-8">
-						My main focus these days is building projects for my full-time work
-						and some company. In my free time I've also learn and research to
-						understand the best practice of programming. When I’m not at the
-						computer, I’m usually playing game, reading a book/manga, or
-						watching anime.
-					</div>
+		<div className="bg-primary">
+			<div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+				<div className="lg:flex lg:justify-between lg:gap-4">
+					<Nav observerRefs={observerRefs} menus={menus} />
+					<main id="content" className="lg:w-1/2">
+						<About observerRefs={observerRefs} />
+						<Education observerRefs={observerRefs} />
+						<Experience observerRefs={observerRefs} />
+						<Project observerRefs={observerRefs} />
+						<Footer />
+					</main>
 				</div>
 			</div>
 		</div>
