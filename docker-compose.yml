@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  react-app:
+    container_name: "sizudev-portfolio"
+    image: sizuwanoadi/sizuadi-portfolio:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_BASE=https://api.example.com
+        - REACT_APP_ENV=production
+        - REACT_APP_ANALYTICS_ID=UA-XXXXX-Y
+        - REACT_APP_FEATURE_FLAG=enabled
+        - REACT_APP_BLOG_URL=https://blog.sizu.dev
+    ports:
+      - "3000:80"
+    restart: unless-stopped
