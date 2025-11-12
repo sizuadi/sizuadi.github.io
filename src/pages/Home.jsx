@@ -8,13 +8,6 @@ import Project from "../components/Project";
 
 const menus = [
 	{
-		id: "",
-		link: `${
-			process.env.REACT_APP_BLOG_URL || "https://sizuadi.github.io/blog"
-		}`,
-		text: "Blog",
-	},
-	{
 		id: "about",
 		text: "About",
 	},

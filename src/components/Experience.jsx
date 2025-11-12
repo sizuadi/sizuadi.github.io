@@ -5,8 +5,7 @@ const experiences = [
 		work_place: "PT. Digerati Atomic Indonesia",
 		role: "Software Engineer",
 		work_type: "Fulltime",
-		description:
-			"I work in PT Digerati Atomic Indonesia as Software Engineer. I responsible in creating frontend or backend system for some project in PT Digerati Atomic Indonesia.",
+		description: `Software Engineer at PT Digerati Atomic Indonesia, delivering multi-tenant semi-ERP modules and domain solutions spanning recruitment platforms, sales and billing optimization, hospital clinical pathway tooling, asset repair tracking (Danone jug rack), queue management, school enrollment with integrated payments and notifications, restaurant membership and loyalty (Angke), and a POS system integrating ordering, vouchers, and event reservations; responsible for clarifying requirements, architecting features, full-stack implementation, integration, performance optimization, and production support.`,
 		year: "Jul 2022 - Present",
 		skills: [
 			"Go",
@@ -16,6 +15,8 @@ const experiences = [
 			"REST API",
 			"PostgreSQL",
 			"Tailwindcss",
+			"Docker",
+			"Linux",
 		],
 	},
 	{
@@ -23,7 +24,7 @@ const experiences = [
 		role: "Fullstack Web Developer",
 		work_type: "Fulltime",
 		description:
-			"I work in PT Areta Amany Solusi as Fullstack Web Developer. I responsible in creating frontend and backend system for some project in PT Areta Amany Solusi.",
+			"Full-stack Web Developer at PT Areta Amany Solusi, responsible for end-to-end frontend and backend delivery across multiple projects, including an E-Learning Management System, custom company profile sites, survey management for data collection and analysis, an equestrian platform connecting riders, stables, and event organizers, and maintenance of a Hospital Management Information System (HMIS); also handle client meetings to clarify requirements, explain functionality, and align planned features with business needs.",
 		year: "Nov 2020 - Jun 2022",
 		skills: ["REST API", "Laravel", "PHP", "MYSQL", "Redis"],
 	},
@@ -112,7 +113,7 @@ function Experience({ observerRefs }) {
 									<p className="block mb-3 italic font-normal leading-none text-slate-300 dark:text-dark-fg-secondary/75">
 										{exp.role} · {exp.work_type}
 									</p>
-									<div className="mb-3 text-xs text-slate-300 leading-5">
+									<div className="mb-3 text-sm text-slate-300 leading-6">
 										{exp.description}
 									</div>
 									<div className="flex flex-wrap mb-3">
