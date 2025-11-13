@@ -46,7 +46,7 @@ const Nav = ({ observerRefs, menus }) => {
 							// Same substring at the start will only be typed out once, initially
 							"I'm a Full-stack Developer",
 							1000, // wait 1s before replacing "Mice" with "Hamsters"
-							"I'm an Informatics Engineering Student",
+							"I'm an Longlife Learner",
 							1000,
 							"I'm a FOSS Enthusiast",
 							1000,
